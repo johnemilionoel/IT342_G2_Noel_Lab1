@@ -19,14 +19,36 @@ function Dashboard() {
       });
   }, []);
 
-  if (!user) return <h3>Loading...</h3>;
+  const handleLogout = () => {
+    localStorage.removeItem("userId");
+    window.location.href = "/login";
+  };
+
+  if (!user) {
+    return (
+      <div className="dashboard">
+        <h2>Loading profile...</h2>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <h2>Dashboard</h2>
-      <p>Email: {user.userEmail}</p>
-      <p>Name: {user.userFirstName} {user.userLastName}</p>
-    </div>
+    <>
+      {/* NAVBAR */}
+      <div className="navbar">
+        <h2>Dashboard</h2>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+
+      {/* PROFILE CONTENT */}
+      <div className="dashboard">
+        <h2>Welcome, {user.userFirstName}!</h2>
+
+        <p><strong>Email:</strong> {user.userEmail}</p>
+        <p><strong>First Name:</strong> {user.userFirstName}</p>
+        <p><strong>Last Name:</strong> {user.userLastName}</p>
+      </div>
+    </>
   );
 }
 

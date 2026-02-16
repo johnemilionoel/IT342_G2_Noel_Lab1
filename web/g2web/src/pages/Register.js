@@ -26,15 +26,46 @@ function Register() {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className="container">
+      <h1>Create Account</h1>
+
       <form onSubmit={handleSubmit}>
-        <input name="userEmail" placeholder="Email" onChange={handleChange} />
-        <input name="userPassword" type="password" placeholder="Password" onChange={handleChange} />
-        <input name="userFirstName" placeholder="First Name" onChange={handleChange} />
-        <input name="userLastName" placeholder="Last Name" onChange={handleChange} />
+        <input
+          name="userEmail"
+          type="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          name="userPassword"
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          name="userFirstName"
+          type="text"
+          placeholder="First Name"
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          name="userLastName"
+          type="text"
+          placeholder="Last Name"
+          onChange={handleChange}
+          required
+        />
+
         <button type="submit">Register</button>
       </form>
+
+      <a href="/login">Already have an account? Login</a>
     </div>
   );
 }

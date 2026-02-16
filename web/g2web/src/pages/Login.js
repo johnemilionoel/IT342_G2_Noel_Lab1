@@ -20,20 +20,38 @@ function Login() {
       // save userId locally
       localStorage.setItem("userId", res.data.userID);
 
+      // go to homepage
       window.location.href = "/home";
     } catch (err) {
-      alert("Invalid login");
+      alert("Invalid email or password");
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="container">
+      <h1>Login</h1>
+
       <form onSubmit={handleSubmit}>
-        <input name="userEmail" placeholder="Email" onChange={handleChange} />
-        <input name="userPassword" type="password" placeholder="Password" onChange={handleChange} />
+        <input
+          name="userEmail"
+          type="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          name="userPassword"
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+          required
+        />
+
         <button type="submit">Login</button>
       </form>
+
+      <a href="/register">Create an account</a>
     </div>
   );
 }
